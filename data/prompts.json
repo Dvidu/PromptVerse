@@ -1,0 +1,92 @@
+[
+  {
+    "id": "demo-1",
+    "title": "Golden hour dreamscape",
+    "prompt": "Cinematic wide-angle landscape of rolling green hills at golden hour, soft mist in the valleys, warm sunlight breaking through dramatic clouds, natural color grading, fine film grain, dreamy atmosphere, ultra detailed, 35mm photography composition",
+    "category": "Nature",
+    "tags": [
+      "landscape",
+      "cinematic",
+      "golden-hour"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85",
+    "likes": 24,
+    "createdAt": "2026-10-01T10:00:00.000Z"
+  },
+  {
+    "id": "demo-2",
+    "title": "Cosmic violet skies",
+    "prompt": "Surreal celestial night sky filled with glowing violet nebulae, tiny stars and soft pink cosmic clouds above a quiet horizon, atmospheric perspective, dreamy science-fiction concept art, high contrast, intricate details, vertical composition",
+    "category": "Fantasy",
+    "tags": [
+      "cosmic",
+      "purple",
+      "surreal"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=85",
+    "likes": 18,
+    "createdAt": "2026-10-02T10:00:00.000Z"
+  },
+  {
+    "id": "demo-3",
+    "title": "Minimal botanical calm",
+    "prompt": "Minimal editorial still life of delicate botanical leaves in a sculptural ceramic vase, soft window light, warm neutral background, subtle shadows, premium art direction, tactile materials, refined composition, muted sage and cream palette",
+    "category": "Other",
+    "tags": [
+      "minimal",
+      "botanical",
+      "editorial"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85",
+    "likes": 12,
+    "createdAt": "2026-10-03T10:00:00.000Z"
+  },
+  {
+    "id": "demo-4",
+    "title": "Modern architectural lines",
+    "prompt": "Contemporary minimalist architecture with sculptural concrete forms, repeating geometric lines, strong midday shadows, a single olive tree, warm beige stone textures, architectural digest editorial, clean composition, realistic material detail",
+    "category": "Other",
+    "tags": [
+      "architecture",
+      "minimal",
+      "design"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85",
+    "likes": 15,
+    "createdAt": "2026-10-04T10:00:00.000Z"
+  },
+  {
+    "id": "demo-5",
+    "title": "Dreamy ocean escape",
+    "prompt": "Dreamlike turquoise ocean meeting a pale sandy beach, gentle waves, sunlit water reflections, peaceful tropical atmosphere, airy travel editorial, natural textures, soft pastel color palette, high detail, vertical image",
+    "category": "Nature",
+    "tags": [
+      "ocean",
+      "travel",
+      "pastel"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+    "likes": 31,
+    "createdAt": "2026-10-05T10:00:00.000Z"
+  },
+  {
+    "id": "demo-6",
+    "title": "Moody creative workspace",
+    "prompt": "A cozy creative desk beside a large window, sketchbooks, colorful pencils, a tablet and warm cup of coffee, afternoon sunlight, calm creative atmosphere, natural wood textures, candid lifestyle editorial, rich details",
+    "category": "Other",
+    "tags": [
+      "workspace",
+      "creative",
+      "cozy"
+    ],
+    "creator": "PromptVerse",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85",
+    "likes": 9,
+    "createdAt": "2026-10-06T10:00:00.000Z"
+  }
+]

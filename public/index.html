@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f4">
+  <title>PromptVerse — Discover Creative Prompts</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">P</span>
+      <span>Prompt<span class="brand-accent">Verse</span></span>
+    </a>
+
+    <div class="search-box">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Search prompts..." aria-label="Search prompts">
+      <button id="clearSearch" type="button" aria-label="Clear search">×</button>
+    </div>
+
+    <nav class="nav-actions">
+      <button class="nav-btn active" id="exploreBtn" type="button">Explore</button>
+      <button class="nav-btn" id="savedBtn" type="button">Saved <span id="savedCount">0</span></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☾</button>
+      <button class="create-btn" id="openUpload" type="button">＋ Create</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-badge"><span></span> YOUR CREATIVE PROMPT LIBRARY</div>
+      <h1>Ideas become <span>inspiration.</span></h1>
+      <p>Discover, save, and share creative prompts for your next masterpiece.</p>
+      <button class="hero-btn" id="heroCreate" type="button">Share your prompt <span>↗</span></button>
+      <div class="hero-stats">
+        <div><strong id="promptCount">0</strong><span>Prompts shared</span></div>
+        <div><strong>∞</strong><span>Creative ideas</span></div>
+        <div><strong>✦</strong><span>Community inspiration</span></div>
+      </div>
+    </section>
+
+    <section class="feed-section">
+      <div class="feed-heading">
+        <div>
+          <p class="eyebrow">THE COMMUNITY COLLECTION</p>
+          <h2 id="feedTitle">Explore the feed</h2>
+          <p class="feed-subtitle" id="resultText">Find inspiration for your next creation.</p>
+        </div>
+        <select id="sortSelect" aria-label="Sort prompts">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="az">Title A–Z</option>
+        </select>
+      </div>
+
+      <div class="category-list" id="categoryList">
+        <button class="category-btn active" data-category="All" type="button">All prompts</button>
+        <button class="category-btn" data-category="AI Art" type="button">AI Art</button>
+        <button class="category-btn" data-category="Photography" type="button">Photography</button>
+        <button class="category-btn" data-category="Design" type="button">Design</button>
+        <button class="category-btn" data-category="3D" type="button">3D</button>
+        <button class="category-btn" data-category="Other" type="button">Other</button>
+      </div>
+
+      <div class="status-message hidden" id="loadingMessage">Loading prompts...</div>
+      <div class="status-message hidden" id="errorMessage"></div>
+      <div class="prompt-grid" id="promptGrid"></div>
+      <div class="empty-state hidden" id="emptyState">
+        <div>✦</div>
+        <h3>No prompts found</h3>
+        <p>Try another search or share the first prompt in this collection.</p>
+        <button class="create-btn" id="emptyCreate" type="button">＋ Create a prompt</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#"><span class="brand-icon">P</span><span>Prompt<span class="brand-accent">Verse</span></span></a>
+    <p>Made for curious minds and creative people. ✦</p>
+  </footer>
+
+  <!-- CREATE PROMPT MODAL -->
+  <div class="modal hidden" id="uploadModal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+    <div class="modal-backdrop" data-close="uploadModal"></div>
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">SHARE YOUR CREATIVITY</p>
+          <h2 id="uploadTitle">Create a prompt</h2>
+        </div>
+        <button class="modal-close" type="button" data-close="uploadModal" aria-label="Close">×</button>
+      </div>
+
+      <form id="uploadForm">
+        <label class="field-label" for="imageInput">Reference image <span>*</span></label>
+        <label class="upload-area" for="imageInput">
+          <img id="uploadPreview" class="upload-preview hidden" alt="Image preview">
+          <span class="upload-placeholder" id="uploadPlaceholder">
+            <span class="upload-icon">↑</span>
+            <strong>Choose an image</strong>
+            <small>JPG, PNG, WEBP or GIF · Maximum 8 MB</small>
+          </span>
+        </label>
+        <input id="imageInput" name="image" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+
+        <label class="field-label" for="titleInput">Title <span>*</span></label>
+        <input class="form-control" id="titleInput" name="title" maxlength="100" placeholder="Give your prompt a name" required>
+
+        <label class="field-label" for="promptInput">Prompt <span>*</span></label>
+        <textarea class="form-control" id="promptInput" name="prompt" rows="5" maxlength="12000" placeholder="Write the full AI prompt here..." required></textarea>
+
+        <div class="form-row">
+          <div>
+            <label class="field-label" for="categoryInput">Category</label>
+            <select class="form-control" id="categoryInput" name="category">
+              <option>AI Art</option>
+              <option>Photography</option>
+              <option>Design</option>
+              <option>3D</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="creatorInput">Creator</label>
+            <input class="form-control" id="creatorInput" name="creator" maxlength="40" placeholder="Your name">
+          </div>
+        </div>
+
+        <label class="field-label" for="tagsInput">Tags</label>
+        <input class="form-control" id="tagsInput" name="tags" placeholder="digital art, portrait, neon">
+
+        <p class="form-error hidden" id="uploadError"></p>
+        <button class="create-btn submit-btn" id="submitBtn" type="submit">Publish prompt ↗</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PROMPT DETAILS MODAL -->
+  <div class="modal hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-backdrop" data-close="detailModal"></div>
+    <div class="modal-panel detail-panel">
+      <button class="modal-close detail-close" type="button" data-close="detailModal" aria-label="Close">×</button>
+      <img class="detail-image" id="detailImage" alt="">
+      <div class="detail-content">
+        <div class="detail-meta"><span id="detailCategory"></span><span id="detailCreator"></span></div>
+        <h2 id="detailTitle"></h2>
+        <p class="detail-prompt" id="detailPrompt"></p>
+        <div class="detail-tags" id="detailTags"></div>
+        <div class="detail-actions">
+          <button class="create-btn" id="detailCopy" type="button">▣ Copy prompt</button>
+          <button class="secondary-btn" id="detailSave" type="button">♡ Save</button>
+          <button class="delete-btn" id="detailDelete" type="button">🗑 Delete prompt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <script src="/script.js"></script>
+</body>
+</html>
